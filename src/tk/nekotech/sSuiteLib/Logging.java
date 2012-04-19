@@ -10,11 +10,26 @@ public class Logging{
 	public JavaPlugin p;
 	public static Configuration cfg;
 	private Logger log;
-	private final String silent;
-	private final String debug;
+	private String silent;
+	private String debug;
 
+	/*
 	public Logging(JavaPlugin p, Configuration cfg, String debug, String silent){
 		this.p = p;
+		this.debug = debug;
+		this.silent = silent;
+		Logging.cfg = cfg;
+		Logger log = p.getLogger();
+	}
+	 */
+
+	public Logging(JavaPlugin p){
+		this.p = p;
+		this.debug = "";
+		this.silent = "";
+	}
+
+	private void init(Configuration cfg, String debug, String silent){
 		this.debug = debug;
 		this.silent = silent;
 		Logging.cfg = cfg;
