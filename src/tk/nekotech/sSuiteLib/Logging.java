@@ -7,111 +7,154 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Logging{
 
-	public JavaPlugin p;
-	public static Configuration cfg;
+	private JavaPlugin p;
+	private static Configuration cfg;
 	private Logger log;
 	private String silent;
 	private String debug;
 
-	/*
+	//	private boolean in = false;
+
 	public Logging(JavaPlugin p, Configuration cfg, String debug, String silent){
 		this.p = p;
-		this.debug = debug;
-		this.silent = silent;
+		if (debug.equals(""))
+			this.debug = null;
+		else
+			this.debug = debug;
+		if (silent.equals(""))
+			this.silent = null;
+		else
+			this.silent = silent;
 		Logging.cfg = cfg;
-		Logger log = p.getLogger();
+		this.log = p.getLogger();
 	}
-	 */
 
+	/*
 	public Logging(JavaPlugin p){
 		this.p = p;
-		this.debug = "";
-		this.silent = "";
+		this.debug = null;
+		this.silent = null;
+		this.log = null;
+		Logging.cfg = null;
 	}
 
-	private void init(Configuration cfg, String debug, String silent){
+	public void init(Configuration cfg, String debug, String silent){
 		this.debug = debug;
 		this.silent = silent;
 		Logging.cfg = cfg;
+		@SuppressWarnings("unused")
 		Logger log = p.getLogger();
+		in = true;
+	}
+	*/
+
+	private boolean checkInit(){
+		if (!p.equals(null))
+			return true;
+		return false;
 	}
 
-	@SuppressWarnings("unused")
-	private final void debug(String i){
-		if (!debug.equals("")){
-			if (cfg.getBoolean(debug, true))
-				if (!silent.equals("")){
+	public void debug(String i){
+		if (checkInit()){
+			if (!cfg.equals(null)){
+				if (!debug.equals(null)){
+					if (cfg.getBoolean(debug, true))
+						if (!silent.equals(null)){
+							if (cfg.getBoolean(silent, false))
+								log.info("[Debug] " + i);
+						}else
+							log.info("[Debug] " + i);
+				}else if (!silent.equals(null)){
 					if (cfg.getBoolean(silent, false))
 						log.info("[Debug] " + i);
 				}else
 					log.info("[Debug] " + i);
-		}else if (!silent.equals("")){
-			if (cfg.getBoolean(silent, false))
+			}else
 				log.info("[Debug] " + i);
 		}else
-			log.info("[Debug] " + i);
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
 	}
 
-	@SuppressWarnings("unused")
-	private final void info(String i){
-		if (!silent.equals("")){
-			if (cfg.getBoolean(silent, false))
+	public void info(String i){
+		if (checkInit()){
+			if (!cfg.equals(null)){
+				if (!silent.equals(null)){
+					if (cfg.getBoolean(silent, false))
+						log.info(i);
+				}else
+					log.info(i);
+			}else
 				log.info(i);
 		}else
-			log.info(i);
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
 	}
 
-	@SuppressWarnings("unused")
-	private final void warn(String i){
-		if (!silent.equals("")){
-			if (cfg.getBoolean(silent, false))
+	public void warning(String i){
+		if (checkInit()){
+			if (!cfg.equals(null)){
+				if (!silent.equals(null)){
+					if (cfg.getBoolean(silent, false))
+						log.warning(i);
+				}else
+					log.warning(i);
+			}else
 				log.warning(i);
 		}else
-			log.warning(i);
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
 	}
 
-	@SuppressWarnings("unused")
-	private final void severe(String i){
-		if (!silent.equals("")){
-			if (cfg.getBoolean(silent, false))
+	public void severe(String i){
+		if (checkInit())
+			if (!silent.equals(null)){
+				if (cfg.getBoolean(silent, false))
+					log.severe(i);
+			}else
 				log.severe(i);
-		}else
-			log.severe(i);
+		else
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
 	}
 
-	@SuppressWarnings("unused")
-	private final void fine(String i){
-		if (!silent.equals("")){
-			if (cfg.getBoolean(silent, false))
+	public void fine(String i){
+		if (checkInit())
+			if (!silent.equals(null)){
+				if (cfg.getBoolean(silent, false))
+					log.fine(i);
+			}else
 				log.fine(i);
-		}else
-			log.fine(i);
+		else
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
 	}
 
-	@SuppressWarnings("unused")
-	private final void finer(String i){
-		if (!silent.equals("")){
-			if (cfg.getBoolean(silent, false))
+	public void finer(String i){
+		if (checkInit())
+			if (!silent.equals(null)){
+				if (cfg.getBoolean(silent, false))
+					log.finer(i);
+			}else
 				log.finer(i);
-		}else
-			log.finer(i);
+		else
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
 	}
 
-	@SuppressWarnings("unused")
-	private final void finest(String i){
-		if (!silent.equals("")){
-			if (cfg.getBoolean(silent, false))
+	public void finest(String i){
+		if (checkInit())
+			if (!silent.equals(null)){
+				if (cfg.getBoolean(silent, false))
+					log.finest(i);
+			}else
 				log.finest(i);
-		}else
-			log.finest(i);
+		else
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
 	}
 
-	@SuppressWarnings("unused")
-	private final void config(String i){
-		if (!silent.equals("")){
-			if (cfg.getBoolean(silent, false))
+	public void config(String i){
+		if (checkInit())
+			if (!silent.equals(null)){
+				if (cfg.getBoolean(silent, false))
+					log.config(i);
+			}else
 				log.config(i);
-		}else
-			log.config(i);
+		else
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
 	}
 }
