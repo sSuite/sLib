@@ -273,4 +273,36 @@ public class ErrorHandling{
 			}else
 				e.printStackTrace();
 	}
+
+	public final void PST(SecurityException e){
+		if (!cfg.equals(null))
+			if (!debug.equals(null)){
+				if (cfg.getBoolean(debug, true))
+					if (!silent.equals(null)){
+						if (cfg.getBoolean(silent, false))
+							e.printStackTrace();
+					}else
+						e.printStackTrace();
+			}else if (!silent.equals(null)){
+				if (cfg.getBoolean(silent, false))
+					e.printStackTrace();
+			}else
+				e.printStackTrace();
+	}
+
+	public final void PST(NoSuchMethodException e){
+		if (!cfg.equals(null))
+			if (!debug.equals(null)){
+				if (cfg.getBoolean(debug, true))
+					if (!silent.equals(null)){
+						if (cfg.getBoolean(silent, false))
+							e.printStackTrace();
+					}else
+						e.printStackTrace();
+			}else if (!silent.equals(null)){
+				if (cfg.getBoolean(silent, false))
+					e.printStackTrace();
+			}else
+				e.printStackTrace();
+	}
 }
