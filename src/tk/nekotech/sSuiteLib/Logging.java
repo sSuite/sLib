@@ -1,7 +1,6 @@
 package tk.nekotech.sSuiteLib;
 
 import java.util.logging.Logger;
-
 import org.bukkit.configuration.Configuration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,7 +12,7 @@ public class Logging{
 	private String silent;
 	private String debug;
 
-	//	private boolean in = false;
+	// private boolean in = false;
 
 	public Logging(JavaPlugin p, Configuration cfg, String debug, String silent){
 		this.p = p;
@@ -30,22 +29,13 @@ public class Logging{
 	}
 
 	/*
-	public Logging(JavaPlugin p){
-		this.p = p;
-		this.debug = null;
-		this.silent = null;
-		this.log = null;
-		Logging.cfg = null;
-	}
+	public Logging(JavaPlugin p){ this.p = p; this.debug = null; this.silent
+	= null; this.log = null; Logging.cfg = null; }
 
 	public void init(Configuration cfg, String debug, String silent){
-		this.debug = debug;
-		this.silent = silent;
-		Logging.cfg = cfg;
-		@SuppressWarnings("unused")
-		Logger log = p.getLogger();
-		in = true;
-	}
+	this.debug = debug; this.silent = silent; Logging.cfg = cfg;
+
+	@SuppressWarnings("unused") Logger log = p.getLogger(); in = true; }
 	*/
 
 	private boolean checkInit(){
@@ -72,7 +62,7 @@ public class Logging{
 			}else
 				log.info("[Debug] " + i);
 		}else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
 	}
 
 	public void info(String i){
@@ -86,7 +76,7 @@ public class Logging{
 			}else
 				log.info(i);
 		}else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
 	}
 
 	public void warning(String i){
@@ -100,7 +90,7 @@ public class Logging{
 			}else
 				log.warning(i);
 		}else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
 	}
 
 	public void severe(String i){
@@ -111,7 +101,7 @@ public class Logging{
 			}else
 				log.severe(i);
 		else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
 	}
 
 	public void fine(String i){
@@ -122,7 +112,7 @@ public class Logging{
 			}else
 				log.fine(i);
 		else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
 	}
 
 	public void finer(String i){
@@ -133,7 +123,7 @@ public class Logging{
 			}else
 				log.finer(i);
 		else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
 	}
 
 	public void finest(String i){
@@ -144,7 +134,7 @@ public class Logging{
 			}else
 				log.finest(i);
 		else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
 	}
 
 	public void config(String i){
@@ -155,6 +145,6 @@ public class Logging{
 			}else
 				log.config(i);
 		else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly.");
+			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
 	}
 }
