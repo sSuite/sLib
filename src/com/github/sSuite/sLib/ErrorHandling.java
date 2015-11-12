@@ -1,4 +1,4 @@
-package tk.nekotech.sSuiteLib;
+package com.github.sSuite.sLib;
 
 import java.io.CharConversionException;
 import java.io.FileNotFoundException;

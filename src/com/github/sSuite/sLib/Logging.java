@@ -1,4 +1,4 @@
-package tk.nekotech.sSuiteLib;
+package com.github.sSuite.sLib;
 
 import java.util.logging.Logger;
 import org.bukkit.configuration.Configuration;

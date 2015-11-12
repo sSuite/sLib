@@ -1,4 +1,4 @@
-package tk.nekotech.sSuiteLib;
+package com.github.sSuite.sLib;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
