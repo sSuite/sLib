@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class PluginLogger{
+public class PluginLogger {
 
 	private JavaPlugin p;
 	private static Configuration cfg;
@@ -14,137 +14,178 @@ public class PluginLogger{
 
 	// private boolean in = false;
 
-	public PluginLogger(JavaPlugin p, Configuration cfg, String debug, String silent){
+	public PluginLogger(JavaPlugin p, Configuration cfg, String debug, String silent) {
 		this.p = p;
-		if (debug.equals(""))
+		if (debug.equals("")) {
 			this.debug = null;
-		else
+		} else {
 			this.debug = debug;
-		if (silent.equals(""))
+		}
+		if (silent.equals("")) {
 			this.silent = null;
-		else
+		} else {
 			this.silent = silent;
+		}
 		PluginLogger.cfg = cfg;
-		this.log = p.getLogger();
+		log = p.getLogger();
 	}
 
 	/*
-	public Logging(JavaPlugin p){ this.p = p; this.debug = null; this.silent
-	= null; this.log = null; Logging.cfg = null; }
+	 * public Logging(JavaPlugin p){ this.p = p; this.debug = null; this.silent
+	 * = null; this.log = null; Logging.cfg = null; }
+	 * 
+	 * public void init(Configuration cfg, String debug, String silent){
+	 * this.debug = debug; this.silent = silent; Logging.cfg = cfg;
+	 * 
+	 * @SuppressWarnings("unused") Logger log = p.getLogger(); in = true; }
+	 */
 
-	public void init(Configuration cfg, String debug, String silent){
-	this.debug = debug; this.silent = silent; Logging.cfg = cfg;
-
-	@SuppressWarnings("unused") Logger log = p.getLogger(); in = true; }
-	*/
-
-	private boolean checkInit(){
-		if (!p.equals(null))
+	private boolean checkInit() {
+		if (!p.equals(null)) {
 			return true;
+		}
 		return false;
 	}
 
-	public void debug(String i){
-		if (checkInit()){
-			if (!cfg.equals(null)){
-				if (!debug.equals(null)){
-					if (cfg.getBoolean(debug, true))
-						if (!silent.equals(null)){
-							if (cfg.getBoolean(silent, false))
+	public void debug(String i) {
+		if (checkInit()) {
+			if (!cfg.equals(null)) {
+				if (!debug.equals(null)) {
+					if (cfg.getBoolean(debug, true)) {
+						if (!silent.equals(null)) {
+							if (cfg.getBoolean(silent, false)) {
 								log.info("[Debug] " + i);
-						}else
+							}
+						} else {
 							log.info("[Debug] " + i);
-				}else if (!silent.equals(null)){
-					if (cfg.getBoolean(silent, false))
+						}
+					}
+				} else if (!silent.equals(null)) {
+					if (cfg.getBoolean(silent, false)) {
 						log.info("[Debug] " + i);
-				}else
+					}
+				} else {
 					log.info("[Debug] " + i);
-			}else
+				}
+			} else {
 				log.info("[Debug] " + i);
-		}else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+			}
+		} else {
+			log.warning(
+					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+		}
 	}
 
-	public void info(String i){
-		if (checkInit()){
-			if (!cfg.equals(null)){
-				if (!silent.equals(null)){
-					if (cfg.getBoolean(silent, false))
+	public void info(String i) {
+		if (checkInit()) {
+			if (!cfg.equals(null)) {
+				if (!silent.equals(null)) {
+					if (cfg.getBoolean(silent, false)) {
 						log.info(i);
-				}else
+					}
+				} else {
 					log.info(i);
-			}else
+				}
+			} else {
 				log.info(i);
-		}else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+			}
+		} else {
+			log.warning(
+					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+		}
 	}
 
-	public void warning(String i){
-		if (checkInit()){
-			if (!cfg.equals(null)){
-				if (!silent.equals(null)){
-					if (cfg.getBoolean(silent, false))
+	public void warning(String i) {
+		if (checkInit()) {
+			if (!cfg.equals(null)) {
+				if (!silent.equals(null)) {
+					if (cfg.getBoolean(silent, false)) {
 						log.warning(i);
-				}else
+					}
+				} else {
 					log.warning(i);
-			}else
+				}
+			} else {
 				log.warning(i);
-		}else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+			}
+		} else {
+			log.warning(
+					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+		}
 	}
 
-	public void severe(String i){
-		if (checkInit())
-			if (!silent.equals(null)){
-				if (cfg.getBoolean(silent, false))
+	public void severe(String i) {
+		if (checkInit()) {
+			if (!silent.equals(null)) {
+				if (cfg.getBoolean(silent, false)) {
 					log.severe(i);
-			}else
+				}
+			} else {
 				log.severe(i);
-		else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+			}
+		} else {
+			log.warning(
+					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+		}
 	}
 
-	public void fine(String i){
-		if (checkInit())
-			if (!silent.equals(null)){
-				if (cfg.getBoolean(silent, false))
+	public void fine(String i) {
+		if (checkInit()) {
+			if (!silent.equals(null)) {
+				if (cfg.getBoolean(silent, false)) {
 					log.fine(i);
-			}else
+				}
+			} else {
 				log.fine(i);
-		else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+			}
+		} else {
+			log.warning(
+					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+		}
 	}
 
-	public void finer(String i){
-		if (checkInit())
-			if (!silent.equals(null)){
-				if (cfg.getBoolean(silent, false))
+	public void finer(String i) {
+		if (checkInit()) {
+			if (!silent.equals(null)) {
+				if (cfg.getBoolean(silent, false)) {
 					log.finer(i);
-			}else
+				}
+			} else {
 				log.finer(i);
-		else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+			}
+		} else {
+			log.warning(
+					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+		}
 	}
 
-	public void finest(String i){
-		if (checkInit())
-			if (!silent.equals(null)){
-				if (cfg.getBoolean(silent, false))
+	public void finest(String i) {
+		if (checkInit()) {
+			if (!silent.equals(null)) {
+				if (cfg.getBoolean(silent, false)) {
 					log.finest(i);
-			}else
+				}
+			} else {
 				log.finest(i);
-		else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+			}
+		} else {
+			log.warning(
+					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+		}
 	}
 
-	public void config(String i){
-		if (checkInit())
-			if (!silent.equals(null)){
-				if (cfg.getBoolean(silent, false))
+	public void config(String i) {
+		if (checkInit()) {
+			if (!silent.equals(null)) {
+				if (cfg.getBoolean(silent, false)) {
 					log.config(i);
-			}else
+				}
+			} else {
 				log.config(i);
-		else
-			log.warning("[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+			}
+		} else {
+			log.warning(
+					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+		}
 	}
 }
