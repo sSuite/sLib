@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Logging{
+public class PluginLogger{
 
 	private JavaPlugin p;
 	private static Configuration cfg;
@@ -14,7 +14,7 @@ public class Logging{
 
 	// private boolean in = false;
 
-	public Logging(JavaPlugin p, Configuration cfg, String debug, String silent){
+	public PluginLogger(JavaPlugin p, Configuration cfg, String debug, String silent){
 		this.p = p;
 		if (debug.equals(""))
 			this.debug = null;
@@ -24,7 +24,7 @@ public class Logging{
 			this.silent = null;
 		else
 			this.silent = silent;
-		Logging.cfg = cfg;
+		PluginLogger.cfg = cfg;
 		this.log = p.getLogger();
 	}
 

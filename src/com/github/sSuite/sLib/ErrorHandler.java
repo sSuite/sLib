@@ -14,14 +14,14 @@ import java.net.UnknownHostException;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class ErrorHandling{
+public class ErrorHandler{
 
 	JavaPlugin p;
 	public static Configuration cfg;
 	private final String silent;
 	private final String debug;
 
-	public ErrorHandling(JavaPlugin p, Configuration cfg, String debug, String silent){
+	public ErrorHandler(JavaPlugin p, Configuration cfg, String debug, String silent){
 		this.p = p;
 		if (debug.equals(""))
 			this.debug = null;
@@ -31,7 +31,7 @@ public class ErrorHandling{
 			this.silent = null;
 		else
 			this.silent = silent;
-		ErrorHandling.cfg = cfg;
+		ErrorHandler.cfg = cfg;
 	}
 
 	public final void PST(NullPointerException e){
