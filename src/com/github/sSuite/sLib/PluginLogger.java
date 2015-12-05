@@ -33,10 +33,10 @@ public class PluginLogger {
 	/*
 	 * public Logging(JavaPlugin p){ this.p = p; this.debug = null; this.silent
 	 * = null; this.log = null; Logging.cfg = null; }
-	 * 
+	 *
 	 * public void init(Configuration cfg, String debug, String silent){
 	 * this.debug = debug; this.silent = silent; Logging.cfg = cfg;
-	 * 
+	 *
 	 * @SuppressWarnings("unused") Logger log = p.getLogger(); in = true; }
 	 */
 

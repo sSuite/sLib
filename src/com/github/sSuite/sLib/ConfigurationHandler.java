@@ -4,15 +4,21 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ConfigurationHandler {
+	private final String CONFIGURATION_EXTENSION = ".yml";
+	private final String COMMENT_FILE = "_comments";
+
 	private final JavaPlugin plugin;
 	private static FileConfiguration configuration;
 	private String fileName;
@@ -27,7 +33,7 @@ public class ConfigurationHandler {
 		this.plugin = plugin;
 		this.fileName = fileName;
 		File dataFolder = plugin.getDataFolder();
-		configurationFile = new File(dataFolder, fileName + ".yml");
+		configurationFile = new File(dataFolder, fileName + CONFIGURATION_EXTENSION);
 		try {
 			// Check and create the plugin data folder
 			if (!dataFolder.exists()) {
@@ -51,8 +57,9 @@ public class ConfigurationHandler {
 		configuration = YamlConfiguration.loadConfiguration(configurationFile);
 
 		// Write the default configuration file, if available
-		Reader defaultConfigurationReader = new InputStreamReader(plugin.getResource(fileName + ".yml"), "UTF8");
-		if (defaultConfigurationReader != null) {
+		InputStream defaultConfigurationStream = plugin.getResource(fileName + CONFIGURATION_EXTENSION);
+		if (defaultConfigurationStream != null) {
+			Reader defaultConfigurationReader = new InputStreamReader(defaultConfigurationStream, "UTF8");
 			YamlConfiguration defaultConfiguration = YamlConfiguration.loadConfiguration(defaultConfigurationReader);
 			configuration.setDefaults(defaultConfiguration);
 		}
@@ -92,5 +99,22 @@ public class ConfigurationHandler {
 			// plugin.PST(e);
 			// plugin.warn("Error adding comments to config.yml!");
 		}
+	}
+
+	private void addComments() throws UnsupportedEncodingException {
+		// Load the comment configuration
+		configuration = new YamlConfiguration();
+
+		// Write the default configuration file, if available
+		InputStream defaultConfigurationStream = plugin.getResource(fileName + COMMENT_FILE + CONFIGURATION_EXTENSION);
+		if (defaultConfigurationStream != null) {
+			Reader defaultConfigurationReader = new InputStreamReader(defaultConfigurationStream, "UTF8");
+			YamlConfiguration defaultConfiguration = YamlConfiguration.loadConfiguration(defaultConfigurationReader);
+			configuration.setDefaults(defaultConfiguration);
+		}
+	}
+
+	public Configuration getConfig() {
+		return configuration;
 	}
 }
