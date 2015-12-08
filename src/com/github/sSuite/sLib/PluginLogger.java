@@ -1,191 +1,111 @@
 package com.github.sSuite.sLib;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PluginLogger {
 
-	private JavaPlugin p;
-	private static Configuration cfg;
-	private Logger log;
-	private String silent;
-	private String debug;
-
-	// private boolean in = false;
-
-	public PluginLogger(JavaPlugin p, Configuration cfg, String debug, String silent) {
-		this.p = p;
-		if (debug.equals("")) {
-			this.debug = null;
-		} else {
-			this.debug = debug;
-		}
-		if (silent.equals("")) {
-			this.silent = null;
-		} else {
-			this.silent = silent;
-		}
-		PluginLogger.cfg = cfg;
-		log = p.getLogger();
+	// Each level does not imply any other!
+	private enum LogLevel {
+		DEBUG, SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST;
 	}
 
-	/*
-	 * public Logging(JavaPlugin p){ this.p = p; this.debug = null; this.silent
-	 * = null; this.log = null; Logging.cfg = null; }
-	 *
-	 * public void init(Configuration cfg, String debug, String silent){
-	 * this.debug = debug; this.silent = silent; Logging.cfg = cfg;
-	 *
-	 * @SuppressWarnings("unused") Logger log = p.getLogger(); in = true; }
-	 */
+	@SuppressWarnings("unused")
+	private JavaPlugin plugin;
+	private Logger logger;
+	private ArrayList<LogLevel> enabledLevels;
+	private boolean silent = false;
 
-	private boolean checkInit() {
-		if (!p.equals(null)) {
-			return true;
-		}
-		return false;
+	public PluginLogger(JavaPlugin plugin) {
+		this.plugin = plugin;
+		logger = plugin.getLogger();
+		enabledLevels = new ArrayList<LogLevel>();
+		enabledLevels.add(LogLevel.SEVERE);
+		enabledLevels.add(LogLevel.WARNING);
+		enabledLevels.add(LogLevel.INFO);
+		enabledLevels.add(LogLevel.CONFIG);
+		enabledLevels.add(LogLevel.FINE);
+		enabledLevels.add(LogLevel.FINER);
+		enabledLevels.add(LogLevel.FINEST);
 	}
 
-	public void debug(String i) {
-		if (checkInit()) {
-			if (!cfg.equals(null)) {
-				if (!debug.equals(null)) {
-					if (cfg.getBoolean(debug, true)) {
-						if (!silent.equals(null)) {
-							if (cfg.getBoolean(silent, false)) {
-								log.info("[Debug] " + i);
-							}
-						} else {
-							log.info("[Debug] " + i);
-						}
-					}
-				} else if (!silent.equals(null)) {
-					if (cfg.getBoolean(silent, false)) {
-						log.info("[Debug] " + i);
-					}
-				} else {
-					log.info("[Debug] " + i);
-				}
-			} else {
-				log.info("[Debug] " + i);
+	public final void printStackTrace(Exception e) {
+		printStackTrace(e, false);
+	}
+
+	public final void printStackTrace(Exception e, boolean debugOnly) {
+		if (!silent) {
+			if (!debugOnly || (debugOnly && enabledLevels.contains(LogLevel.DEBUG))) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void setSilent(boolean silent) {
+		this.silent = silent;
+	}
+
+	public void setLevelEnabled(LogLevel level, boolean enabled) {
+		if (enabled) {
+			if (!enabledLevels.contains(level)) {
+				enabledLevels.add(level);
 			}
 		} else {
-			log.warning(
-					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+			enabledLevels.remove(level);
 		}
 	}
 
-	public void info(String i) {
-		if (checkInit()) {
-			if (!cfg.equals(null)) {
-				if (!silent.equals(null)) {
-					if (cfg.getBoolean(silent, false)) {
-						log.info(i);
-					}
-				} else {
-					log.info(i);
-				}
-			} else {
-				log.info(i);
-			}
-		} else {
-			log.warning(
-					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+	public boolean isLevelEnabled(LogLevel level) {
+		return enabledLevels.contains(level);
+	}
+
+	public void debug(String message) {
+		if (!silent && enabledLevels.contains(LogLevel.DEBUG)) {
+			logger.info("[DEBUG] " + message);
 		}
 	}
 
-	public void warning(String i) {
-		if (checkInit()) {
-			if (!cfg.equals(null)) {
-				if (!silent.equals(null)) {
-					if (cfg.getBoolean(silent, false)) {
-						log.warning(i);
-					}
-				} else {
-					log.warning(i);
-				}
-			} else {
-				log.warning(i);
-			}
-		} else {
-			log.warning(
-					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+	public void severe(String message) {
+		if (!silent && enabledLevels.contains(LogLevel.SEVERE)) {
+			logger.severe(message);
 		}
 	}
 
-	public void severe(String i) {
-		if (checkInit()) {
-			if (!silent.equals(null)) {
-				if (cfg.getBoolean(silent, false)) {
-					log.severe(i);
-				}
-			} else {
-				log.severe(i);
-			}
-		} else {
-			log.warning(
-					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+	public void warning(String message) {
+		if (!silent && enabledLevels.contains(LogLevel.WARNING)) {
+			logger.warning(message);
 		}
 	}
 
-	public void fine(String i) {
-		if (checkInit()) {
-			if (!silent.equals(null)) {
-				if (cfg.getBoolean(silent, false)) {
-					log.fine(i);
-				}
-			} else {
-				log.fine(i);
-			}
-		} else {
-			log.warning(
-					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+	public void info(String message) {
+		if (!silent && enabledLevels.contains(LogLevel.INFO)) {
+			logger.info(message);
 		}
 	}
 
-	public void finer(String i) {
-		if (checkInit()) {
-			if (!silent.equals(null)) {
-				if (cfg.getBoolean(silent, false)) {
-					log.finer(i);
-				}
-			} else {
-				log.finer(i);
-			}
-		} else {
-			log.warning(
-					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+	public void config(String message) {
+		if (!silent && enabledLevels.contains(LogLevel.CONFIG)) {
+			logger.config(message);
 		}
 	}
 
-	public void finest(String i) {
-		if (checkInit()) {
-			if (!silent.equals(null)) {
-				if (cfg.getBoolean(silent, false)) {
-					log.finest(i);
-				}
-			} else {
-				log.finest(i);
-			}
-		} else {
-			log.warning(
-					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+	public void fine(String message) {
+		if (!silent && enabledLevels.contains(LogLevel.FINE)) {
+			logger.fine(message);
 		}
 	}
 
-	public void config(String i) {
-		if (checkInit()) {
-			if (!silent.equals(null)) {
-				if (cfg.getBoolean(silent, false)) {
-					log.config(i);
-				}
-			} else {
-				log.config(i);
-			}
-		} else {
-			log.warning(
-					"[sSuiteLib] Class 'Logging' was not initialized properly. Please notify Smiley43210 on BukkitDev via the ticket system.");
+	public void finer(String message) {
+		if (!silent && enabledLevels.contains(LogLevel.FINER)) {
+			logger.finer(message);
 		}
 	}
+
+	public void finest(String message) {
+		if (!silent && enabledLevels.contains(LogLevel.FINEST)) {
+			logger.finest(message);
+		}
+	}
+
 }

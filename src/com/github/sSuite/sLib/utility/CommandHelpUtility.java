@@ -13,4 +13,8 @@ public class CommandHelpUtility {
 		return ChatColor.GOLD + command + ChatColor.RESET + " - " + usage;
 	}
 
+	public static String createCommand(String command, String usage, boolean hasPermission) {
+		return ChatColor.GOLD + command + ChatColor.RESET + " - " + (hasPermission ? "" : ChatColor.RED) + usage;
+	}
+
 }

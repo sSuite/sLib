@@ -2,15 +2,12 @@ package com.github.sSuite.sLib;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import org.bukkit.configuration.Configuration;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,6 +20,7 @@ public class ConfigurationHandler {
 	private static FileConfiguration configuration;
 	private String fileName;
 	private File configurationFile;
+	@SuppressWarnings("unused")
 	private String pluginVersion;
 
 	public ConfigurationHandler(JavaPlugin plugin) {
@@ -34,25 +32,22 @@ public class ConfigurationHandler {
 		this.fileName = fileName;
 		File dataFolder = plugin.getDataFolder();
 		configurationFile = new File(dataFolder, fileName + CONFIGURATION_EXTENSION);
+
+		// Check and create the plugin data folder
+		if (!dataFolder.exists()) {
+			dataFolder.mkdirs();
+		}
+
 		try {
-			// Check and create the plugin data folder
-			if (!dataFolder.exists()) {
-				dataFolder.mkdirs();
-			}
-
-			// Check and create the configuration file
-			if (!configurationFile.exists()) {
-				configurationFile.createNewFile();
-			}
-
 			// Write the default configuration file, if available
 			load();
 		} catch (Exception e) {
-			// TODO
+			e.printStackTrace();
 		}
 	}
 
-	public final void load() throws FileNotFoundException, IOException, InvalidConfigurationException {
+	public final void load() throws FileNotFoundException, IOException {
+		plugin.getLogger().warning("Loading " + fileName + CONFIGURATION_EXTENSION + "...");
 		// Load the configuration
 		configuration = YamlConfiguration.loadConfiguration(configurationFile);
 
@@ -67,10 +62,26 @@ public class ConfigurationHandler {
 
 	public final void save() {
 		try {
+			plugin.getLogger().warning("Saving " + fileName + CONFIGURATION_EXTENSION + "...");
 			configuration.save(configurationFile);
+			// addComments();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			plugin.getLogger().severe("Error while saving " + fileName + CONFIGURATION_EXTENSION + "!");
 			e.printStackTrace();
+		}
+	}
+
+	@SuppressWarnings("unused")
+	private void addComments() throws UnsupportedEncodingException {
+		// Load the comment configuration
+		Configuration configuration = new YamlConfiguration();
+
+		// Write the default configuration file, if available
+		InputStream defaultConfigurationStream = plugin.getResource(fileName + COMMENT_FILE + CONFIGURATION_EXTENSION);
+		if (defaultConfigurationStream != null) {
+			Reader defaultConfigurationReader = new InputStreamReader(defaultConfigurationStream, "UTF8");
+			YamlConfiguration defaultConfiguration = YamlConfiguration.loadConfiguration(defaultConfigurationReader);
+			configuration.setDefaults(defaultConfiguration);
 		}
 		// try {
 		// PrintWriter printWriter = new PrintWriter(new
@@ -85,33 +96,6 @@ public class ConfigurationHandler {
 		// // plugin.PST(e);
 		// // plugin.warn("Error adding comments to config.yml!");
 		// }
-	}
-
-	@SuppressWarnings("unused")
-	private final void restore() {
-		try {
-			PrintWriter printWriter = new PrintWriter(new FileWriter(configurationFile));
-
-			printWriter.println("pluginVersion: \"" + pluginVersion + "\"");
-
-			printWriter.close();
-		} catch (IOException e) {
-			// plugin.PST(e);
-			// plugin.warn("Error adding comments to config.yml!");
-		}
-	}
-
-	private void addComments() throws UnsupportedEncodingException {
-		// Load the comment configuration
-		configuration = new YamlConfiguration();
-
-		// Write the default configuration file, if available
-		InputStream defaultConfigurationStream = plugin.getResource(fileName + COMMENT_FILE + CONFIGURATION_EXTENSION);
-		if (defaultConfigurationStream != null) {
-			Reader defaultConfigurationReader = new InputStreamReader(defaultConfigurationStream, "UTF8");
-			YamlConfiguration defaultConfiguration = YamlConfiguration.loadConfiguration(defaultConfigurationReader);
-			configuration.setDefaults(defaultConfiguration);
-		}
 	}
 
 	public Configuration getConfig() {
