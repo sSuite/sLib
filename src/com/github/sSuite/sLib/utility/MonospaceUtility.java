@@ -6,7 +6,8 @@ import java.util.Set;
 public class MonospaceUtility {
 
 	private static final int DEFAULT_WIDTH = 6;
-	public static final int DEFAULT_CHAT_WIDTH = 320;
+	public static final int DEFAULT_CLIENT_CHAT_WIDTH = 320;
+	public static final int DEFAULT_MONOSPACE_CHAT_WIDTH = 60;
 	@SuppressWarnings("serial")
 	private static HashMap<Integer, String> charWidths = new HashMap<Integer, String>() {
 		{

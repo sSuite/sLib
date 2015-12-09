@@ -6,8 +6,17 @@ import org.bukkit.entity.Player;
 
 public class CommandHelpUtility {
 
+	public static void sendHeader(String title, CommandSender sender) {
+		sender.sendMessage(createHeader(title, !(sender instanceof Player)));
+	}
+
+	public static String createHeader(String title, CommandSender sender) {
+		return createHeader(title, !(sender instanceof Player));
+	}
+
 	public static String createHeader(String title, boolean monospace) {
-		int maxWidth = MonospaceUtility.DEFAULT_CHAT_WIDTH;
+		int maxWidth = monospace ? MonospaceUtility.DEFAULT_MONOSPACE_CHAT_WIDTH
+				: MonospaceUtility.DEFAULT_CLIENT_CHAT_WIDTH;
 
 		maxWidth -= MonospaceUtility.getStringWidth(title, monospace);
 
@@ -20,13 +29,19 @@ public class CommandHelpUtility {
 				+ StringUtility.repeat("-", dashCount);
 	}
 
+	public static void sendCommand(String command, String usage, CommandSender sender, String permission) {
+		if (!(sender instanceof Player) || (sender instanceof Player && sender.hasPermission(permission))) {
+			sender.sendMessage(createCommand(command, usage));
+		}
+	}
+
 	public static String createCommand(String command, String usage) {
 		return ChatColor.GOLD + command + ChatColor.RESET + " - " + usage;
 	}
 
 	public static String createCommand(String command, String usage, CommandSender sender, String permission) {
 		if (sender instanceof Player) {
-			return createCommand(command, usage, ((Player) sender).hasPermission(permission));
+			return createCommand(command, usage, sender.hasPermission(permission));
 		}
 
 		return createCommand(command, usage, true);
@@ -37,9 +52,7 @@ public class CommandHelpUtility {
 	}
 
 	public static String createCommand(String command, String usage, boolean hasPermission) {
-		// return ChatColor.GOLD + command + ChatColor.RESET + " - " +
-		// (hasPermission ? "" : ChatColor.RED) + usage;
-		return hasPermission ? ChatColor.GOLD + command + ChatColor.RESET + " - " + usage : "";
+		return ChatColor.GOLD + command + ChatColor.RESET + " - " + (hasPermission ? "" : ChatColor.RED) + usage;
 	}
 
 }
