@@ -3,17 +3,24 @@ package com.github.sSuite.sLib.utility;
 public class NumberUtility {
 
 	/**
+	 * Rounds the number to the nearest whole number.
+	 * 
 	 * @param number
-	 * @return
+	 *            - the number
+	 * @return the rounded number
 	 */
 	public static double roundDouble(double number) {
 		return roundDouble(number, 0);
 	}
 
 	/**
+	 * Rounds the number to the specified places.
+	 * 
 	 * @param number
+	 *            - the number
 	 * @param places
-	 * @return
+	 *            - the number of places
+	 * @return the rounded number
 	 */
 	public static double roundDouble(double number, int places) {
 		number = Math.floor(number * Math.pow(10, places) + 0.5) / Math.pow(10, places);
@@ -32,7 +39,8 @@ public class NumberUtility {
 
 	/**
 	 * @param number
-	 * @return
+	 *            - the number
+	 * @return the rounded number
 	 */
 	public static String roundString(double number) {
 		return roundString(number, 0);
@@ -40,8 +48,10 @@ public class NumberUtility {
 
 	/**
 	 * @param number
+	 *            - the number
 	 * @param places
-	 * @return
+	 *            - the number of places
+	 * @return the rounded number
 	 */
 	public static String roundString(double number, int places) {
 		number = Math.floor(number * Math.pow(10, places) + 0.5) / Math.pow(10, places);

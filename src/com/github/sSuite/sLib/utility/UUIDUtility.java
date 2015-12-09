@@ -12,15 +12,36 @@ public class UUIDUtility {
 	private static final String UUID_API = "https://api.mojang.com/users/profiles/minecraft/%NAME%";
 	private static final String NAME_API = "https://api.mojang.com/user/profiles/%UUID%/names";
 
+	/**
+	 * Formats a UUID according to v4 standards.
+	 * 
+	 * @param uuid
+	 *            - the UUID string
+	 * @return the formatted UUID string
+	 */
 	public static String formatUUID(String uuid) {
 		return uuid.substring(0, 8) + uuid.substring(8, 12) + uuid.substring(12, 16) + uuid.substring(16, 20)
 				+ uuid.substring(20);
 	}
 
+	/**
+	 * Gets the username associated with the UUID.
+	 * 
+	 * @param uuid
+	 *            - the UUID
+	 * @return the username or null if no user can be found
+	 */
 	public static String getNameFromUUID(UUID uuid) {
 		return getNameFromUUID(uuid.toString());
 	}
 
+	/**
+	 * Gets the username associated with the UUID.
+	 * 
+	 * @param uuid
+	 *            - the UUID
+	 * @return the username or null if no user can be found
+	 */
 	public static String getNameFromUUID(String uuid) {
 		try {
 			String response = HTTPUtility.get(NAME_API.replace("%UUID%", uuid.replace("-", "")));
@@ -36,6 +57,13 @@ public class UUIDUtility {
 		return null;
 	}
 
+	/**
+	 * Gets the UUID associated with the username.
+	 * 
+	 * @param name
+	 *            - the username
+	 * @return the UUID
+	 */
 	public static UUID getUUIDFromName(String name) {
 		try {
 			String response = HTTPUtility.get(UUID_API.replace("%NAME%", name));

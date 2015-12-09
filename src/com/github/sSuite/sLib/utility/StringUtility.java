@@ -6,6 +6,7 @@ public class StringUtility {
 	 * Checks whether a string is safe for using in yaml files.
 	 *
 	 * @param string
+	 *            - the string to check
 	 * @return whether or not the string is yaml safe
 	 */
 	public static boolean yamlSafe(String string) {
@@ -16,8 +17,10 @@ public class StringUtility {
 	 * Repeats a string.
 	 *
 	 * @param string
+	 *            - the string to repeat
 	 * @param times
-	 * @return
+	 *            - the number of times to repeat the string
+	 * @return the repeated string
 	 */
 	public static String repeat(String string, int times) {
 		StringBuilder stringBuilder = new StringBuilder();

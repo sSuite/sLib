@@ -19,12 +19,33 @@ public class MonospaceUtility {
 		}
 	};
 
+	/**
+	 * Creates a String which contains full sequences of the specified string no
+	 * greater than the specified width.
+	 * 
+	 * @param string
+	 *            - the string to repeat
+	 * @param width
+	 *            - the target width
+	 * @param monospace
+	 *            - whether or not the target output has a monospaced font
+	 * @return the repeated string
+	 */
 	public static String repeatStringToWidth(String string, int width, boolean monospace) {
 		int count = width / getStringWidth(string, monospace);
 
 		return StringUtility.repeat(string, count);
 	}
 
+	/**
+	 * Gets the pixel width of a string.
+	 * 
+	 * @param string
+	 *            - the string
+	 * @param monospace
+	 *            - whether or not the target output has a monospaced font
+	 * @return the pixel width of the string
+	 */
 	public static int getStringWidth(String string, boolean monospace) {
 		int width = 0;
 		// The section symbol followed by a non-style character results in a
@@ -41,6 +62,19 @@ public class MonospaceUtility {
 		return width;
 	}
 
+	/**
+	 * Fills a string to the specified width with a filler string.
+	 * 
+	 * @param stringToFill
+	 *            - the string to fill
+	 * @param fillerString
+	 *            - the filler string
+	 * @param width
+	 *            - the target width
+	 * @param monospace
+	 *            - whether or not the target output has a monospaced font
+	 * @return the filled string
+	 */
 	public static String fillToWidthWithString(String stringToFill, String fillerString, int width, boolean monospace) {
 		int currentWidth = getStringWidth(stringToFill, monospace);
 
@@ -52,6 +86,13 @@ public class MonospaceUtility {
 		return stringToFill;
 	}
 
+	/**
+	 * Gets the pixel width of a character.
+	 * 
+	 * @param character
+	 *            - the character
+	 * @return the pixel width of the character
+	 */
 	public static int getCharacterWidth(char character) {
 		int width = DEFAULT_WIDTH;
 		Set<Integer> charWidthKeys = charWidths.keySet();
