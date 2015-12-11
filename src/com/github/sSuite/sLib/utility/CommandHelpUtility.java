@@ -8,7 +8,7 @@ public class CommandHelpUtility {
 
 	/**
 	 * Sends a centered header to the sender.
-	 * 
+	 *
 	 * @param title
 	 *            - the title of the header
 	 * @param sender
@@ -20,7 +20,7 @@ public class CommandHelpUtility {
 
 	/**
 	 * Creates a centered header for the sender.
-	 * 
+	 *
 	 * @param title
 	 *            - the title of the header
 	 * @param sender
@@ -33,7 +33,7 @@ public class CommandHelpUtility {
 
 	/**
 	 * Creates a centered header for the sender.
-	 * 
+	 *
 	 * @param title
 	 *            - the title of the header
 	 * @param monospace
@@ -41,8 +41,7 @@ public class CommandHelpUtility {
 	 * @return the header
 	 */
 	public static String createHeader(String title, boolean monospace) {
-		int maxWidth = monospace ? MonospaceUtility.DEFAULT_MONOSPACE_WIDTH
-				: MonospaceUtility.DEFAULT_CLIENT_WIDTH;
+		int maxWidth = monospace ? MonospaceUtility.DEFAULT_MONOSPACE_WIDTH : MonospaceUtility.DEFAULT_CLIENT_WIDTH;
 
 		maxWidth -= MonospaceUtility.getStringWidth(title, monospace);
 
@@ -53,7 +52,7 @@ public class CommandHelpUtility {
 	/**
 	 * Creates a centered header with <code>dashCount</code> dashes on each side
 	 * of the title.
-	 * 
+	 *
 	 * @param title
 	 *            - the title of the header
 	 * @param dashCount
@@ -68,7 +67,7 @@ public class CommandHelpUtility {
 	/**
 	 * Sends a formatted command string to the sender if the sender has the
 	 * specified permission.
-	 * 
+	 *
 	 * @param command
 	 *            - the command
 	 * @param usage
@@ -79,14 +78,14 @@ public class CommandHelpUtility {
 	 *            - the permission to check
 	 */
 	public static void sendCommand(String command, String usage, CommandSender sender, String permission) {
-		if (!(sender instanceof Player) || (sender instanceof Player && sender.hasPermission(permission))) {
+		if (!(sender instanceof Player) || sender instanceof Player && sender.hasPermission(permission)) {
 			sender.sendMessage(createCommand(command, usage));
 		}
 	}
 
 	/**
 	 * Sends a formatted command string to the sender.
-	 * 
+	 *
 	 * @param command
 	 *            - the command
 	 * @param usage
@@ -100,7 +99,7 @@ public class CommandHelpUtility {
 
 	/**
 	 * Creates a permission-based formatted command string for the sender.
-	 * 
+	 *
 	 * @param command
 	 *            - the command
 	 * @param usage
@@ -121,7 +120,7 @@ public class CommandHelpUtility {
 
 	/**
 	 * Creates a permission-based formatted command string for the player.
-	 * 
+	 *
 	 * @param command
 	 *            - the command
 	 * @param usage
@@ -138,7 +137,7 @@ public class CommandHelpUtility {
 
 	/**
 	 * Creates a permission-based formatted command string.
-	 * 
+	 *
 	 * @param command
 	 *            - the command
 	 * @param usage
@@ -153,7 +152,7 @@ public class CommandHelpUtility {
 
 	/**
 	 * Creates a formatted command string.
-	 * 
+	 *
 	 * @param command
 	 *            - the command
 	 * @param usage
@@ -166,7 +165,7 @@ public class CommandHelpUtility {
 
 	/**
 	 * Formats the static half of the command string.
-	 * 
+	 *
 	 * @param command
 	 *            - the command
 	 * @return the static half of the command string

@@ -22,7 +22,7 @@ public class MonospaceUtility {
 	/**
 	 * Creates a String which contains full sequences of the specified string no
 	 * greater than the specified width.
-	 * 
+	 *
 	 * @param string
 	 *            - the string to repeat
 	 * @param width
@@ -39,7 +39,7 @@ public class MonospaceUtility {
 
 	/**
 	 * Gets the pixel width of a string.
-	 * 
+	 *
 	 * @param string
 	 *            - the string
 	 * @param monospace
@@ -52,11 +52,13 @@ public class MonospaceUtility {
 		// 6-width character in the client only
 		String temporary = string.replaceAll("§([0-9A-Fa-fK-Ok-oRr])", "");
 		if (monospace) {
+			width = string.length();
+		} else {
 			temporary = temporary.replaceAll("§.", "0");
-		}
 
-		for (int i = 0; i < temporary.length(); i++) {
-			width += getCharacterWidth(string.charAt(i));
+			for (int i = 0; i < temporary.length(); i++) {
+				width += getCharacterWidth(string.charAt(i));
+			}
 		}
 
 		return width;
@@ -64,7 +66,7 @@ public class MonospaceUtility {
 
 	/**
 	 * Fills a string to the specified width with a filler string.
-	 * 
+	 *
 	 * @param stringToFill
 	 *            - the string to fill
 	 * @param fillerString
@@ -88,7 +90,7 @@ public class MonospaceUtility {
 
 	/**
 	 * Gets the pixel width of a character.
-	 * 
+	 *
 	 * @param character
 	 *            - the character
 	 * @return the pixel width of the character

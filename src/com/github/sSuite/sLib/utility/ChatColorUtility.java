@@ -16,7 +16,7 @@ public class ChatColorUtility {
 
 	/**
 	 * Replaces any plain-text color with the actual ChatColor.
-	 * 
+	 *
 	 * @param string
 	 *            - the string to perform color replacements on
 	 * @return the string with colors

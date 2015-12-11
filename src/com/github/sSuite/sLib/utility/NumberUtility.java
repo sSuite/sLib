@@ -4,7 +4,7 @@ public class NumberUtility {
 
 	/**
 	 * Rounds the number to the nearest whole number.
-	 * 
+	 *
 	 * @param number
 	 *            - the number
 	 * @return the rounded number
@@ -15,7 +15,7 @@ public class NumberUtility {
 
 	/**
 	 * Rounds the number to the specified places.
-	 * 
+	 *
 	 * @param number
 	 *            - the number
 	 * @param places

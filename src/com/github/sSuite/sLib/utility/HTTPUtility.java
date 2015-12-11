@@ -10,7 +10,7 @@ public class HTTPUtility {
 
 	/**
 	 * Performs a GET request with the specified URL.
-	 * 
+	 *
 	 * @param url
 	 *            - the URL
 	 * @return the response from the GET request
@@ -26,7 +26,7 @@ public class HTTPUtility {
 
 	/**
 	 * Performs a GET request with the specified URL.
-	 * 
+	 *
 	 * @param url
 	 *            - the URL
 	 * @return the response from the GET request

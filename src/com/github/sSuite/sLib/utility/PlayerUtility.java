@@ -11,7 +11,7 @@ public class PlayerUtility {
 
 	/**
 	 * Gets an online player by their username.
-	 * 
+	 *
 	 * @param username
 	 *            - the username
 	 * @return the player
@@ -49,7 +49,7 @@ public class PlayerUtility {
 
 	/**
 	 * Gets an "offline" player by their username.
-	 * 
+	 *
 	 * @param username
 	 *            - the username
 	 * @return the offline player

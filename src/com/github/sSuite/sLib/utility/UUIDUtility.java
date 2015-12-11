@@ -14,7 +14,7 @@ public class UUIDUtility {
 
 	/**
 	 * Formats a UUID according to v4 standards.
-	 * 
+	 *
 	 * @param uuid
 	 *            - the UUID string
 	 * @return the formatted UUID string
@@ -26,7 +26,7 @@ public class UUIDUtility {
 
 	/**
 	 * Gets the username associated with the UUID.
-	 * 
+	 *
 	 * @param uuid
 	 *            - the UUID
 	 * @return the username or null if no user can be found
@@ -37,7 +37,7 @@ public class UUIDUtility {
 
 	/**
 	 * Gets the username associated with the UUID.
-	 * 
+	 *
 	 * @param uuid
 	 *            - the UUID
 	 * @return the username or null if no user can be found
@@ -59,7 +59,7 @@ public class UUIDUtility {
 
 	/**
 	 * Gets the UUID associated with the username.
-	 * 
+	 *
 	 * @param name
 	 *            - the username
 	 * @return the UUID
