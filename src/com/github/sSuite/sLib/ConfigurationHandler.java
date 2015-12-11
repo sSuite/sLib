@@ -47,7 +47,6 @@ public class ConfigurationHandler {
 	}
 
 	public final void load() throws FileNotFoundException, IOException {
-		plugin.getLogger().warning("Loading " + fileName + CONFIGURATION_EXTENSION + "...");
 		// Load the configuration
 		configuration = YamlConfiguration.loadConfiguration(configurationFile);
 
@@ -62,7 +61,6 @@ public class ConfigurationHandler {
 
 	public final void save() {
 		try {
-			plugin.getLogger().warning("Saving " + fileName + CONFIGURATION_EXTENSION + "...");
 			configuration.save(configurationFile);
 			// addComments();
 		} catch (IOException e) {
