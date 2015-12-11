@@ -6,8 +6,8 @@ import java.util.Set;
 public class MonospaceUtility {
 
 	private static final int DEFAULT_WIDTH = 6;
-	public static final int DEFAULT_CLIENT_CHAT_WIDTH = 320;
-	public static final int DEFAULT_MONOSPACE_CHAT_WIDTH = 60;
+	public static final int DEFAULT_CLIENT_WIDTH = 320;
+	public static final int DEFAULT_MONOSPACE_WIDTH = 60;
 	@SuppressWarnings("serial")
 	private static HashMap<Integer, String> charWidths = new HashMap<Integer, String>() {
 		{
@@ -76,11 +76,11 @@ public class MonospaceUtility {
 	 * @return the filled string
 	 */
 	public static String fillToWidthWithString(String stringToFill, String fillerString, int width, boolean monospace) {
-		int currentWidth = getStringWidth(stringToFill, monospace);
+		int remainingWidth = width - getStringWidth(stringToFill, monospace);
 
-		if (currentWidth < width) {
+		if (remainingWidth > 0) {
 			stringToFill += StringUtility.repeat(fillerString,
-					monospace ? width - currentWidth : width - currentWidth / getStringWidth(fillerString, monospace));
+					monospace ? remainingWidth : remainingWidth / getStringWidth(fillerString, monospace));
 		}
 
 		return stringToFill;

@@ -64,6 +64,8 @@ public class NumberUtility {
 			int decimalPosition = numberString.indexOf(".") + 1;
 			int decimals = numberString.length() - decimalPosition;
 			numberString = numberString + StringUtility.repeat("0", places - decimals);
+		} else {
+			numberString = numberString.substring(0, numberString.length() - 2);
 		}
 		return numberString;
 	}

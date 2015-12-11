@@ -41,8 +41,8 @@ public class CommandHelpUtility {
 	 * @return the header
 	 */
 	public static String createHeader(String title, boolean monospace) {
-		int maxWidth = monospace ? MonospaceUtility.DEFAULT_MONOSPACE_CHAT_WIDTH
-				: MonospaceUtility.DEFAULT_CLIENT_CHAT_WIDTH;
+		int maxWidth = monospace ? MonospaceUtility.DEFAULT_MONOSPACE_WIDTH
+				: MonospaceUtility.DEFAULT_CLIENT_WIDTH;
 
 		maxWidth -= MonospaceUtility.getStringWidth(title, monospace);
 
@@ -82,6 +82,20 @@ public class CommandHelpUtility {
 		if (!(sender instanceof Player) || (sender instanceof Player && sender.hasPermission(permission))) {
 			sender.sendMessage(createCommand(command, usage));
 		}
+	}
+
+	/**
+	 * Sends a formatted command string to the sender.
+	 * 
+	 * @param command
+	 *            - the command
+	 * @param usage
+	 *            - the command usage
+	 * @param sender
+	 *            - the sender
+	 */
+	public static void sendCommand(String command, String usage, CommandSender sender) {
+		sender.sendMessage(createCommand(command, usage));
 	}
 
 	/**
