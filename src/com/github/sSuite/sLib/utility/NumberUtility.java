@@ -1,4 +1,4 @@
-package com.github.sSuite.sLib.utility;
+package com.github.ssuite.slib.utility;
 
 public class NumberUtility {
 

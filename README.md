@@ -1,5 +1,5 @@
 # sLib
-Bukkit/Spigot library plugin required for sSuite plugins.
+Bukkit/Spigot library plugin required for ssuite plugins.
 
 Latest version: 1.0.0
 

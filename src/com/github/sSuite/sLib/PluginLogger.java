@@ -1,4 +1,4 @@
-package com.github.sSuite.sLib;
+package com.github.ssuite.slib;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;

@@ -1,4 +1,4 @@
-package com.github.sSuite.sLib;
+package com.github.ssuite.slib;
 
 import java.io.File;
 import java.io.FileNotFoundException;

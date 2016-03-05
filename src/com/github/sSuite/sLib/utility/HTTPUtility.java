@@ -1,4 +1,4 @@
-package com.github.sSuite.sLib.utility;
+package com.github.ssuite.slib.utility;
 
 import java.io.BufferedReader;
 import java.io.IOException;

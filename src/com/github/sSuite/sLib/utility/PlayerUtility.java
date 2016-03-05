@@ -1,11 +1,12 @@
-package com.github.sSuite.sLib.utility;
+package com.github.ssuite.slib.utility;
 
 import java.util.Collection;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import com.github.sSuite.sLib.exception.AmbiguousPlayerNameException;
-import com.github.sSuite.sLib.exception.NoSuchPlayerException;
+import com.github.ssuite.slib.exception.AmbiguousPlayerNameException;
+import com.github.ssuite.slib.exception.NoSuchPlayerException;
+import net.md_5.bungee.api.ChatColor;
 
 public class PlayerUtility {
 
@@ -40,9 +41,11 @@ public class PlayerUtility {
 			}
 		}
 		if (count > 1) {
-			throw new AmbiguousPlayerNameException("The name " + username + " is ambiguous.");
+			throw new AmbiguousPlayerNameException("The name " + username + " is ambiguous!",
+					ChatColor.RED + "The name " + ChatColor.GOLD + username + ChatColor.RED + " is ambiguous!");
 		} else if (count < 1) {
-			throw new NoSuchPlayerException("The player " + username + " could not be found.");
+			throw new NoSuchPlayerException("The player " + username + " could not be found!",
+					ChatColor.RED + "The player " + ChatColor.GOLD + username + ChatColor.RED + " could not be found!");
 		}
 		return match;
 	}
