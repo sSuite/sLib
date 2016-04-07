@@ -1,2 +1,5 @@
+v1.0.1 (4/6/16)
+Made all package names lowercase
+
 v1.0.0 (12/10/15)
 Initial release
