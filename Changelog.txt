@@ -1,5 +1,8 @@
-v1.0.1 (4/6/16)
+1.0.2 (4/9/16)
+Now backwards compatible with 1.8.x (and supports 1.9 and 1.9.2) and allows for future compatibility
+
+1.0.1 (4/6/16)
 Made all package names lowercase
 
-v1.0.0 (12/10/15)
+1.0.0 (12/10/15)
 Initial release

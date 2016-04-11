@@ -2,11 +2,11 @@ package com.github.ssuite.slib.utility;
 
 import java.util.Collection;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import com.github.ssuite.slib.exception.AmbiguousPlayerNameException;
 import com.github.ssuite.slib.exception.NoSuchPlayerException;
-import net.md_5.bungee.api.ChatColor;
 
 public class PlayerUtility {
 
