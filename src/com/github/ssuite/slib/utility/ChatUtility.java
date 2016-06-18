@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import com.github.ssuite.slib.exception.UnsupportedVersionException;
 import com.github.ssuite.slib.utility.chat.JSONChatUtility;
+import com.github.ssuite.slib.utility.chat.JSONChatUtility_1_10_R1;
 import com.github.ssuite.slib.utility.chat.JSONChatUtility_1_8_R1;
 import com.github.ssuite.slib.utility.chat.JSONChatUtility_1_8_R3;
 import com.github.ssuite.slib.utility.chat.JSONChatUtility_1_9_R1;
@@ -71,6 +72,10 @@ public class ChatUtility {
 			}
 
 			switch (version) {
+				case "v1_10_R1":
+					// 1.10
+					jsonChatUtility = new JSONChatUtility_1_10_R1();
+					break;
 				case "v1_9_R1":
 					// 1.9 - 1.9.2 ++?
 					jsonChatUtility = new JSONChatUtility_1_9_R1();

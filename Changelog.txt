@@ -1,3 +1,6 @@
+1.0.3 (6/18/16)
+Supports 1.10
+
 1.0.2 (4/11/16)
 Now backwards compatible with 1.8.x (and supports 1.9 and 1.9.2) and allows for future compatibility
 
