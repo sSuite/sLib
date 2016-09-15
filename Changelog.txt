@@ -1,3 +1,8 @@
+1.0.4 (7/4/16)
+Added the ConfirmationService
+Added the ExperienceUtility
+Reformatted JavaDoc comments
+
 1.0.3 (6/18/16)
 Supports 1.10
 
