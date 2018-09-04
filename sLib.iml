@@ -7,13 +7,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="CraftBukkit 1.8" level="project" />
-    <orderEntry type="library" name="CraftBukkit 1.8.8" level="project" />
-    <orderEntry type="library" name="CraftBukkit 1.8.3" level="project" />
-    <orderEntry type="library" name="CraftBukkit 1.9.4" level="project" />
-    <orderEntry type="library" name="CraftBukkit 1.10.2" level="project" />
-    <orderEntry type="library" name="CraftBukkit 1.11.2" level="project" />
-    <orderEntry type="library" name="CraftBukkit 1.12" level="project" />
-    <orderEntry type="library" name="CraftBukkit 1.9.2" level="project" />
+    <orderEntry type="library" name="CraftBukkit 1.8" level="application" />
+    <orderEntry type="library" name="CraftBukkit 1.8.3" level="application" />
+    <orderEntry type="library" name="CraftBukkit 1.8.8" level="application" />
+    <orderEntry type="library" name="CraftBukkit 1.9.2" level="application" />
+    <orderEntry type="library" name="CraftBukkit 1.9.4" level="application" />
+    <orderEntry type="library" name="CraftBukkit 1.10.2" level="application" />
+    <orderEntry type="library" name="CraftBukkit 1.11.2" level="application" />
+    <orderEntry type="library" name="CraftBukkit 1.12" level="application" />
+    <orderEntry type="library" name="CraftBukkit 1.13.1" level="application" />
+    <orderEntry type="library" name="CraftBukkit 1.13" level="application" />
   </component>
 </module>
