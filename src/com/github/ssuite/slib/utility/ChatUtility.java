@@ -1,7 +1,14 @@
 package com.github.ssuite.slib.utility;
 
 import com.github.ssuite.slib.exception.UnsupportedVersionException;
-import com.github.ssuite.slib.utility.chat.*;
+import com.github.ssuite.slib.utility.chat.JSONChatUtility;
+import com.github.ssuite.slib.utility.chat.JSONChatUtility_1_10_R1;
+import com.github.ssuite.slib.utility.chat.JSONChatUtility_1_11_R1;
+import com.github.ssuite.slib.utility.chat.JSONChatUtility_1_12_R1;
+import com.github.ssuite.slib.utility.chat.JSONChatUtility_1_8_R1;
+import com.github.ssuite.slib.utility.chat.JSONChatUtility_1_8_R3;
+import com.github.ssuite.slib.utility.chat.JSONChatUtility_1_9_R1;
+import com.github.ssuite.slib.utility.chat.JSONChatUtility_1_9_R2;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

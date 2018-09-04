@@ -20,8 +20,8 @@ public class UUIDUtility {
 	 * @return the formatted UUID string
 	 */
 	public static String formatUUID(String uuid) {
-		return uuid.substring(0, 8) + uuid.substring(8, 12) + uuid.substring(12, 16) + uuid.substring(16, 20)
-				+ uuid.substring(20);
+		return uuid.substring(0, 8) + uuid.substring(8, 12) + uuid.substring(12, 16) + uuid.substring(16, 20) +
+				uuid.substring(20);
 	}
 	
 	/**

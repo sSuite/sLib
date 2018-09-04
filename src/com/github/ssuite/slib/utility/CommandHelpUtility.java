@@ -39,8 +39,8 @@ public class CommandHelpUtility {
 		
 		maxWidth -= MonospaceUtility.getStringWidth(title, monospace);
 		
-		return ChatColor.GREEN + MonospaceUtility.repeatStringToWidth("-", maxWidth / 2, monospace) + ChatColor.RESET
-				+ title + ChatColor.GREEN + MonospaceUtility.repeatStringToWidth("-", maxWidth / 2, monospace);
+		return ChatColor.GREEN + MonospaceUtility.repeatStringToWidth("-", maxWidth / 2, monospace) + ChatColor.RESET +
+				title + ChatColor.GREEN + MonospaceUtility.repeatStringToWidth("-", maxWidth / 2, monospace);
 	}
 	
 	/**
@@ -52,8 +52,8 @@ public class CommandHelpUtility {
 	 * @return the header
 	 */
 	public static String createHeader(String title, int dashCount) {
-		return ChatColor.GREEN + StringUtility.repeat("-", dashCount) + ChatColor.RESET + title + ChatColor.GREEN
-				+ StringUtility.repeat("-", dashCount);
+		return ChatColor.GREEN + StringUtility.repeat("-", dashCount) + ChatColor.RESET + title + ChatColor.GREEN +
+				StringUtility.repeat("-", dashCount);
 	}
 	
 	/**

@@ -56,8 +56,8 @@ public class ConfirmationService {
 			@Override
 			public void run() {
 				String stringToken = new String(token);
-				plugin.getServer().getPluginManager()
-						.callEvent(new ConfirmationTimedOutEvent(getPlayer(stringToken), stringToken));
+				plugin.getServer().getPluginManager().callEvent(
+						new ConfirmationTimedOutEvent(getPlayer(stringToken), stringToken));
 				removeToken(stringToken);
 			}
 		}.runTaskLater(plugin, duration * 20L);
